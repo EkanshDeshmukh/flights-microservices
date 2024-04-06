@@ -1,11 +1,10 @@
-const info = (req, res) => {
-  return res.json({
+ const info =  (req, res, next) => {
+  res.json({
     success: true,
-    message: "API is LIVE",
-    
+    message: "Hello !!",
   });
-};
+}
 
 module.exports = {
-  info,
-};
+  info
+}
