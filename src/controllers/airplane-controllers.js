@@ -5,7 +5,6 @@ const { AirplaneService } = require("../services");
 /** 
  * POST : /airplane
  * req-body : {modelNumber : '' , capacity :}
- 
  */
 
 async function createAirplane(req, res) {

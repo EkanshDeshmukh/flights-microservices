@@ -1,4 +1,4 @@
-const {AirplaneRepository } = require("../repositories");
+const { AirplaneRepository } = require("../repositories");
 
 const airplaneRepository = new AirplaneRepository();
 
