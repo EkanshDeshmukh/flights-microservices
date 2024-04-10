@@ -1,4 +1,7 @@
+const { StatusCodes } = require("http-status-codes");
+
 const { AirplaneRepository } = require("../repositories");
+const { AppError } = require("../utils/errors/app-error");
 
 const airplaneRepository = new AirplaneRepository();
 
@@ -7,8 +10,16 @@ async function createAirplane(data) {
     const airplane = await airplaneRepository.create(data);
     return airplane;
   } catch (error) {
+     
     console.log(error);
-    throw error;
+    if (error.name === "ValidationError") {
+       let explanation = [];
+       error.errors.forEach((err)=>{
+        explanation.push(err.message);
+       })
+       throw new AppError('Cannot create a new Airplane object ',StatusCodes.BAD_REQUEST);
+    }
+        throw new AppError('Cannot create a new Airplane object ',StatusCodes.BAD_REQUEST);
   }
 }
 
